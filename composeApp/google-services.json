@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1079248552738",
+    "project_id": "vendingapp-482314",
+    "storage_bucket": "vendingapp-482314.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079248552738:android:9504aaae6647c3d504db7b",
+        "android_client_info": {
+          "package_name": "com.example.vendor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1079248552738-ko5mahq1dar9hif9hr95m65kfsqj2gpi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCm8bLvJ3_kTkhqgiFZsIlv412ynvj2xoY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1079248552738-ko5mahq1dar9hif9hr95m65kfsqj2gpi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

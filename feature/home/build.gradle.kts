@@ -6,7 +6,6 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
-    alias(libs.plugins.serialization)
 }
 
 kotlin {
@@ -21,7 +20,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "shared"
+            baseName = "home"
             isStatic = true
         }
     }
@@ -35,8 +34,11 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
+            implementation(project(path = ":shared"))
+            implementation(project(path = ":data"))
             implementation(libs.androidx.lifecycle.runtimeCompose)
-            implementation(libs.kotlinx.serialization)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -45,7 +47,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.example.shared"
+    namespace = "com.example.home"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {

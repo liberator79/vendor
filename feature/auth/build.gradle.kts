@@ -36,9 +36,12 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.messagebar.kmp)
             implementation(project(path = ":shared"))
+            implementation(project(path = ":data"))
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(libs.auth.kmp)
             implementation(libs.auth.firebase.kmp)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

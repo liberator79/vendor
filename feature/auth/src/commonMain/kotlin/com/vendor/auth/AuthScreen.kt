@@ -13,6 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,9 +31,14 @@ import com.vendor.shared.SurfaceError
 import com.vendor.shared.TextPrimary
 import com.vendor.shared.TextSecondary
 import com.vendor.shared.TextWhite
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun AuthScreen(){
+fun AuthScreen(navigateToHome : () -> Unit){
+    val scope = rememberCoroutineScope()
+    val viewModel = koinViewModel<AuthViewModel>()
     val messageBarState = rememberMessageBarState()
     var loadingState by remember { mutableStateOf(false) }
 
@@ -77,7 +83,17 @@ fun AuthScreen(){
                     linkAccount = false,
                     onResult = {result ->
                         result.onSuccess { user ->
-                            messageBarState.addSuccess("Login successful!")
+                            viewModel.createCustomer(
+                                user = user,
+                                onSuccess = {
+                                    scope.launch {
+                                        messageBarState.addSuccess("Authentication Successful")
+                                        //delay(2000)
+                                        navigateToHome()
+                                    }
+                                },
+                                onError = {error -> messageBarState.addError(error)}
+                            )
                             loadingState = false
                         }.onFailure { error ->
                             if(error.message?.contains("A network error") == true){

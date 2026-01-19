@@ -37,6 +37,8 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(project(path = ":feature:auth"))
+            implementation(project(path = ":feature:home"))
+            implementation(project(path = ":shared"))
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(libs.kotlinx.serialization)
             implementation(libs.compose.navigation)

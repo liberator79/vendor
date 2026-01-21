@@ -20,7 +20,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "home"
+            baseName = "profile"
             isStatic = true
         }
     }
@@ -34,13 +34,12 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
-            implementation(project(path = ":shared"))
-            implementation(project(path = ":data"))
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(libs.koin.compose)
             implementation(libs.compose.navigation)
             implementation(libs.koin.compose.viewmodel)
             implementation(libs.messagebar.kmp)
+            implementation(project(path =":shared"))
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -49,7 +48,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.example.home"
+    namespace = "com.example.profile"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {

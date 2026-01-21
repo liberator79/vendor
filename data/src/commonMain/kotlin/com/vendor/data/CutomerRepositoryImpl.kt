@@ -2,6 +2,7 @@ package com.vendor.data
 
 import com.vendor.data.domain.CustomerRepository
 import com.vendor.shared.domain.Customer
+import com.vendor.shared.util.RequestState
 import dev.gitlive.firebase.Firebase
 import dev.gitlive.firebase.auth.FirebaseUser
 import dev.gitlive.firebase.auth.auth
@@ -40,6 +41,15 @@ class CutomerRepositoryImpl : CustomerRepository {
 
     override fun getCurrentUserId(): String? {
         return Firebase.auth.currentUser?.uid
+    }
+
+    override suspend fun signout() : RequestState<Unit> {
+        return try{
+            Firebase.auth.signOut()
+            RequestState.Success(data = Unit)
+        }catch (error : Exception) {
+            RequestState.Error("Error while signing out : ${error.message}")
+        }
     }
 
 }

@@ -42,6 +42,7 @@ kotlin {
             implementation(libs.koin.compose.viewmodel)
             implementation(libs.koin.core)
             implementation(project(path = (":feature:auth")))
+            implementation(project(path = (":feature:home")))
             implementation(project(path = (":data")))
         }
         commonTest.dependencies {

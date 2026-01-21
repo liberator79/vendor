@@ -30,3 +30,6 @@ val ButtonDisabled = GrayDarker
 val IconPrimary = Black
 val IconSecondary = Orange
 val IconWhite = White
+
+val BorderIdle = GrayDarker
+val BorderError = Red

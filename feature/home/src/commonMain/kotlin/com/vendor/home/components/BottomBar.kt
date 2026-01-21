@@ -25,7 +25,7 @@ import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun BottomBar(
-    isActive : Boolean,
+    isActive : BottomBarDestination,
     modifier: Modifier = Modifier,
     onSelect : (BottomBarDestination) -> Unit
 ){
@@ -40,10 +40,11 @@ fun BottomBar(
     ){
         BottomBarDestination.entries.forEach {destination ->
             val animateColor by animateColorAsState(
-                if(isActive) IconSecondary else IconPrimary
+                if(isActive == destination) IconSecondary else IconPrimary
             )
                 Icon(
-                    modifier = Modifier.clickable { onSelect(destination) },
+                    modifier = Modifier
+                        .clickable { onSelect(destination) },
                     painter = painterResource(destination.icon),
                     tint = animateColor,
                     contentDescription = destination.title

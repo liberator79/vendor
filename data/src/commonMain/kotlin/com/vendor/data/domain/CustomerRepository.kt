@@ -1,5 +1,6 @@
 package com.vendor.data.domain
 
+import com.vendor.shared.util.RequestState
 import dev.gitlive.firebase.auth.FirebaseUser
 
 interface CustomerRepository {
@@ -10,4 +11,6 @@ interface CustomerRepository {
     )
 
     fun getCurrentUserId() : String?
+
+    suspend fun signout() : RequestState<Unit>
 }

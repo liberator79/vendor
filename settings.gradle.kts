@@ -29,9 +29,9 @@ dependencyResolutionManagement {
 }
 include(":data")
 include(":di")
-
 include(":feature:home")
 include(":feature:auth")
+include(":feature:profile")
 include(":navigation")
 include(":composeApp")
 include(":shared")

@@ -5,6 +5,7 @@ import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -60,7 +61,10 @@ import rememberMessageBarState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeGraphScreen(navigateToAuth : () -> Unit){
+fun HomeGraphScreen(
+    navigateToAuth : () -> Unit,
+    navigateToProfile : () -> Unit
+){
     val navController = rememberNavController()
     val currentRoute = navController.currentBackStackEntryAsState()
     val selectedDestination by remember {
@@ -79,7 +83,11 @@ fun HomeGraphScreen(navigateToAuth : () -> Unit){
 
     val offsetValue by remember { derivedStateOf { (screenWidth/1.5).dp } }
     val animatedOffSet by animateDpAsState(
-        targetValue = if(drawerState.isOpened())offsetValue else 0.dp
+        targetValue = if(drawerState.isOpened())offsetValue else 0.dp,
+        animationSpec = tween(
+            durationMillis = 600,
+            //easing =
+        )
     )
 
     val animateScale by animateFloatAsState(
@@ -114,7 +122,7 @@ fun HomeGraphScreen(navigateToAuth : () -> Unit){
                     }
                 )
             },
-            onProfileClick = {},
+            onProfileClick = {navigateToProfile()},
             onAdminPannelClick = {},
             onContactUsClick = {},
             isCustomDrawerOpen = drawerState.isOpened()

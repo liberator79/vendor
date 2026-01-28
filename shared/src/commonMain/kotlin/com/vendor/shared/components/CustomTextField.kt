@@ -1,4 +1,4 @@
-package com.vendor.profile.components
+package com.vendor.shared.components
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.border
@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.selection.TextSelectionColors
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -13,12 +14,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.vendor.shared.Alpha
 import com.vendor.shared.BorderError
 import com.vendor.shared.BorderIdle
 import com.vendor.shared.FontSize
+import com.vendor.shared.IconSecondary
+import com.vendor.shared.Surface
+import com.vendor.shared.SurfaceDarker
 import com.vendor.shared.SurfaceLighter
 import com.vendor.shared.TextPrimary
 
@@ -46,15 +52,18 @@ fun CustomTextField(
                 width = 1.dp,
                 color = boarderColor,
                 shape = RoundedCornerShape(6.dp)
-            ),
+            )
+            .clip(RoundedCornerShape(6.dp)),
 
         enabled = enabled,
         value = value,
-        onValueChange = onValueChange,
-        placeholder = if(placeholder != null) {
+        onValueChange = {newValue ->
+            onValueChange(newValue)
+        },
+        placeholder = if (placeholder != null) {
             @Composable {
                 Text(
-                    modifier =Modifier.alpha(Alpha.DISABLED),
+                    modifier = Modifier.alpha(Alpha.HALF),
                     text = placeholder,
                     fontSize = FontSize.REGULAR
                 )
@@ -62,10 +71,25 @@ fun CustomTextField(
         } else null,
         singleLine = !expanded,
         shape = RoundedCornerShape(6.dp),
-        keyBoardOptions = keyBoardOptions,
+        keyboardOptions = keyBoardOptions,
         colors = TextFieldDefaults.colors(
+            focusedTextColor = TextPrimary,
+            unfocusedTextColor = TextPrimary,
             disabledTextColor = TextPrimary.copy(alpha = Alpha.DISABLED),
-            focusedTextColor = TextPrimary
+            focusedContainerColor = SurfaceLighter,
+            unfocusedContainerColor = SurfaceLighter,
+            disabledContainerColor = SurfaceDarker,
+            focusedPlaceholderColor = TextPrimary.copy(alpha = Alpha.HALF),
+            unfocusedPlaceholderColor = TextPrimary.copy(alpha = Alpha.HALF),
+            disabledPlaceholderColor =TextPrimary.copy(alpha = Alpha.DISABLED),
+            focusedIndicatorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent,
+            errorIndicatorColor = Color.Transparent,
+            disabledIndicatorColor = Color.Transparent,
+            selectionColors = TextSelectionColors(
+                handleColor = IconSecondary,
+                backgroundColor =Color.Unspecified
+            )
         )
     )
 }

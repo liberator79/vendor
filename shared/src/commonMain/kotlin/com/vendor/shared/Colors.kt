@@ -17,6 +17,7 @@ val SurfaceLighter = GrayLighter
 val SurfaceDarker = Gray
 val SurfaceBrand = Yellowish
 val SurfaceError = Red
+val SurfaceSecondary = Orange
 
 val TextPrimary = Black
 val TextSecondary = Orange

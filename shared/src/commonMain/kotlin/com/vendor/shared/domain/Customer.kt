@@ -8,16 +8,13 @@ data class Customer(
     val firstName : String,
     val lastName : String,
     val email : String,
-    val address : UserAddress? = null,
+    val city : String? = null,
+    val postalCode : Int? = null,
+    val address : String? = null,
     val phoneNumber : PhoneNumber? = null,
     val card : List<CartItem> = emptyList()
 )
-@Serializable
-data class UserAddress(
-    val city : String,
-    val postalCode : String,
-    val address : String
-)
+
 @Serializable
 data class PhoneNumber (
     val countryCode : Int,

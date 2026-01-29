@@ -28,6 +28,7 @@ import com.vendor.shared.Resources
 import com.vendor.shared.Surface
 import com.vendor.shared.TextPrimary
 import com.vendor.shared.components.ErrorCard
+import com.vendor.shared.components.InfoCard
 import com.vendor.shared.components.LoadingCard
 import com.vendor.shared.components.PrimaryButton
 import com.vendor.shared.components.ProfileForm
@@ -122,7 +123,7 @@ fun ProfileScreen(
                                 onClick = {
                                     viewModel.updateCustomer(
                                         onSuccess = {
-                                            messageBarState.addSuccess("Updated User")
+                                            messageBarState.addSuccess("User updated successfully")
                                         },
                                         onError = {message ->
                                             messageBarState.addError(message)
@@ -133,10 +134,10 @@ fun ProfileScreen(
                         }
                     },
                     onError = {message ->
-                        ErrorCard(
-                            errorText = message,
-                            fontSize = FontSize.REGULAR,
-                            modifier = Modifier.fillMaxSize()
+                        InfoCard(
+                            title = "Oops",
+                            subTitle = message,
+                            icon = Resources.Image.Cat
                         )
                     }
                 )

@@ -47,7 +47,7 @@ class ProfileViewModel(
                     lastName.length in 3..50  &&
                     city?.length in 3..50 &&
                     address?.length in 3..50 &&
-                    postalCode?.toString()?.length in 3..8 &&
+                    (postalCode!= null || postalCode?.toString()?.length in 3..8) &&
                     phoneNumber?.phoneNumber?.length in 5..30
 
         }
@@ -64,7 +64,9 @@ class ProfileViewModel(
                         email = fetchedCustomer.email,
                         address = fetchedCustomer.address,
                         phoneNumber = fetchedCustomer.phoneNumber,
-                        country = Country.entries.firstOrNull{it.dialCode == fetchedCustomer.phoneNumber?.countryCode} ?: Country.India
+                        country = Country.entries.firstOrNull{it.dialCode == fetchedCustomer.phoneNumber?.countryCode} ?: Country.India,
+                        city = fetchedCustomer.city,
+                        postalCode = fetchedCustomer.postalCode
                     )
                     screenReady = RequestState.Success(Unit)
                 }else if(data.isError()){

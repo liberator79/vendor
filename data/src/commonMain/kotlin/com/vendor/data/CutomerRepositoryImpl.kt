@@ -72,7 +72,9 @@ class CutomerRepositoryImpl : CustomerRepository {
                                 email = document.get(field = "email"),
                                 phoneNumber = document.get(field = "phoneNumber"),
                                 address = document.get(field = "address"),
-                                card = document.get(field = "card")
+                                card = document.get(field = "card"),
+                                city = document.get(field = "city"),
+                                postalCode = document.get(field = "postalCode")
                             )
                             send(RequestState.Success(data = customer))
                         }else{

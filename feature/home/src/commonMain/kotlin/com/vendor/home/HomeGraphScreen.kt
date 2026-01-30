@@ -63,7 +63,8 @@ import rememberMessageBarState
 @Composable
 fun HomeGraphScreen(
     navigateToAuth : () -> Unit,
-    navigateToProfile : () -> Unit
+    navigateToProfile : () -> Unit,
+    navigateToAdmin : () -> Unit,
 ){
     val navController = rememberNavController()
     val currentRoute = navController.currentBackStackEntryAsState()
@@ -123,7 +124,7 @@ fun HomeGraphScreen(
                 )
             },
             onProfileClick = {navigateToProfile()},
-            onAdminPannelClick = {},
+            onAdminPannelClick = {navigateToAdmin()},
             onContactUsClick = {},
             isCustomDrawerOpen = drawerState.isOpened()
         )

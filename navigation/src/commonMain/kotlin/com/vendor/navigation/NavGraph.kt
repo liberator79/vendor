@@ -4,8 +4,11 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
+import com.vendor.admin_panel.AdminPanelScreen
 import com.vendor.auth.AuthScreen
 import com.vendor.home.HomeGraphScreen
+import com.vendor.manage_product.ManageProductScreen
 import com.vendor.profile.ProfileScreen
 import com.vendor.shared.navigation.Screen
 
@@ -34,6 +37,9 @@ fun SetUpNavGraph(startDestination : Screen = Screen.Auth){
                 },
                 navigateToProfile = {
                     navController.navigate(Screen.Profile)
+                },
+                navigateToAdmin = {
+                    navController.navigate(Screen.AdminPanel)
                 }
             )
         }
@@ -42,5 +48,25 @@ fun SetUpNavGraph(startDestination : Screen = Screen.Auth){
                 navController.navigateUp()
             })
         }
+        composable<Screen.AdminPanel>{
+            AdminPanelScreen(
+                navigateToHome = {
+                    navController.navigateUp()
+                },
+                navigateToManageProduct = {id ->
+                    navController.navigate(Screen.ManageProduct(id))
+                }
+            )
+        }
+        composable<Screen.ManageProduct>{
+            val id = it.toRoute<Screen.ManageProduct>().id
+            ManageProductScreen(
+                id = id,
+                navigateBack = {
+                    navController.navigateUp()
+                }
+            )
+        }
+
     }
 }

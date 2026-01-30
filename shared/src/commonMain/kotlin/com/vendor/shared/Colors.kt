@@ -34,3 +34,9 @@ val IconWhite = White
 
 val BorderIdle = GrayDarker
 val BorderError = Red
+
+val CategoryYellow = Color(0xFFFFC738)
+val CategoryBlue = Color(0xFF38B3FF)
+val CategoryGreen = Color(0xFF19D109)
+val CategoryPurple = Color(0xFF8E5EFF)
+val CategoryRed = Color(0xFFFF5E60)

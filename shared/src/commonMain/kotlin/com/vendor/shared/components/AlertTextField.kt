@@ -32,7 +32,7 @@ fun AlertTextField(
     isExpanded : Boolean = true
 ){
     Row(
-        modifier = Modifier
+        modifier = modifier
             .background(SurfaceLighter)
             .border(
                 width = 1.dp,

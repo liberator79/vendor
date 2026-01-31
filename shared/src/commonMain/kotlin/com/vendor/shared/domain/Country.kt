@@ -13,14 +13,19 @@ enum class Country (
         code = "IN",
         flag = Resources.Icon.User
     ),
-    Serbia(
-        dialCode = 381,
-        code = "RS",
+    Nepal(
+        dialCode = 977,
+        code = "NP",
         flag = Resources.Icon.User
     ),
-    Usa(
-        dialCode = 1,
-        code = "US",
+    Japan(
+        dialCode = 81,
+        code = "JP",
+        flag = Resources.Icon.User
+    ),
+    Russia(
+        dialCode = 7,
+        code = "RU",
         flag = Resources.Icon.User
     )
 }

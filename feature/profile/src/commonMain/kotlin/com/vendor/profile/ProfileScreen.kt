@@ -26,7 +26,10 @@ import com.vendor.shared.FontSize
 import com.vendor.shared.IconPrimary
 import com.vendor.shared.Resources
 import com.vendor.shared.Surface
+import com.vendor.shared.SurfaceBrand
+import com.vendor.shared.SurfaceError
 import com.vendor.shared.TextPrimary
+import com.vendor.shared.TextWhite
 import com.vendor.shared.components.ErrorCard
 import com.vendor.shared.components.InfoCard
 import com.vendor.shared.components.LoadingCard
@@ -48,6 +51,10 @@ fun ProfileScreen(
     val screenReady = viewModel.screenReady
     val isFormValid = viewModel.isFormValid
     val messageBarState = rememberMessageBarState()
+
+
+
+
     Scaffold(
         containerColor = Surface,
         topBar = {
@@ -84,7 +91,11 @@ fun ProfileScreen(
                     bottom = padding.calculateBottomPadding() + 24.dp
                 ),
             messageBarState = messageBarState,
-            errorMaxLines = 2
+            errorMaxLines = 2,
+            errorContentColor = TextWhite,
+            errorContainerColor = SurfaceError,
+            successContainerColor = SurfaceBrand,
+            successContentColor = TextPrimary
         ){
             Column(
                 modifier = Modifier

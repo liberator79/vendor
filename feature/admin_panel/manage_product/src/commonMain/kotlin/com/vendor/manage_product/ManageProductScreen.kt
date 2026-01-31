@@ -47,6 +47,7 @@ import com.vendor.shared.components.AlertTextField
 import com.vendor.shared.components.CustomTextField
 import com.vendor.shared.components.PrimaryButton
 import com.vendor.shared.components.dialog.CategoriesDialog
+import com.vendor.shared.domain.ProductCategory
 import org.jetbrains.compose.resources.painterResource
 import rememberMessageBarState
 
@@ -57,7 +58,22 @@ fun ManageProductScreen(
     navigateBack : () -> Unit
 ){
     val messageBarState = rememberMessageBarState()
+    var categoty by remember { mutableStateOf(ProductCategory.Protein)}
     var showCategoriesDialog by remember{mutableStateOf(false)}
+
+    AnimatedVisibility(
+        visible = showCategoriesDialog
+    ){
+        CategoriesDialog(
+            onCategorySelect = {selectedCategory ->
+                categoty = selectedCategory
+                showCategoriesDialog = false
+            },
+            onDismiss = {showCategoriesDialog = false},
+            category = categoty
+        )
+    }
+
     Scaffold(
         containerColor = Surface,
         topBar = {
@@ -91,6 +107,7 @@ fun ManageProductScreen(
             )
         }
     ) {padding ->
+
         ContentWithMessageBar(
             messageBarState = messageBarState,
             errorMaxLines = 2,
@@ -101,17 +118,14 @@ fun ManageProductScreen(
                     bottom = padding.calculateBottomPadding()
                 )
         ){
+
             Column(
                 modifier = Modifier
                     .padding(horizontal = 12.dp)
                     .padding(bottom = 24.dp, top = 12.dp)
 
             ){
-                AnimatedVisibility(
-                    visible = showCategoriesDialog
-                ){
-                    CategoriesDialog(onCategorySelect = {}, onDismiss = {})
-                }
+
                 Column(
                     modifier = Modifier
                         .weight(1f)
@@ -153,11 +167,11 @@ fun ManageProductScreen(
                         expanded = true
                     )
                     AlertTextField(
-                        text = "Chocolate",
+                        modifier = Modifier.fillMaxWidth(),
+                        text = categoty.title,
                         onClick = {
                             showCategoriesDialog = true
                         },
-                        modifier = Modifier.fillMaxWidth(),
                     )
                     CustomTextField(
                         value = "",

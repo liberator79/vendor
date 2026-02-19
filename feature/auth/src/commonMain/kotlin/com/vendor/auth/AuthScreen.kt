@@ -64,7 +64,7 @@ fun AuthScreen(navigateToHome : () -> Unit){
                     horizontalAlignment = Alignment.CenterHorizontally
                 ){
                     Text(
-                        text = "Vendor",
+                        text = "V E N D O R",
                         textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth(),
                         fontFamily = BebasNeueFont(),
@@ -88,7 +88,7 @@ fun AuthScreen(navigateToHome : () -> Unit){
                                 onSuccess = {
                                     scope.launch {
                                         messageBarState.addSuccess("Authentication Successful")
-                                        //delay(2000)
+                                        delay(1000)
                                         navigateToHome()
                                     }
                                 },

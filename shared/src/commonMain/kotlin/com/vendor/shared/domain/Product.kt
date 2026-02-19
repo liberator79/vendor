@@ -2,9 +2,11 @@ package com.vendor.shared.domain
 
 import androidx.compose.ui.graphics.Color
 import com.vendor.shared.CategoryBlue
+import com.vendor.shared.CategoryBrown
 import com.vendor.shared.CategoryGreen
 import com.vendor.shared.CategoryPurple
 import com.vendor.shared.CategoryRed
+import com.vendor.shared.CategoryRoseGold
 import com.vendor.shared.CategoryYellow
 import kotlinx.serialization.Serializable
 
@@ -31,20 +33,20 @@ enum class ProductCategory(
         title = "Protein",
         color = CategoryYellow
     ),
-    Creatine(
-        title = "Creatine",
-        color = CategoryBlue
-    ),
-    PreWorkout(
-        title = "Pre-Workout",
-        color = CategoryGreen
-    ),
     Gainers(
         title = "Gainers",
         color = CategoryPurple
     ),
     Accessories(
         title = "Accessories",
+        color = CategoryGreen
+    ),
+    Chocolates(
+        title = "Chocolates",
+        color = CategoryRoseGold
+    ),
+    ColdDrinks(
+        title = "Drinks",
         color = CategoryRed
     )
 }

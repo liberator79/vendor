@@ -1,5 +1,6 @@
 package com.vendor.home.components
 
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -22,6 +23,8 @@ import com.vendor.home.domain.DrawerItem
 import com.vendor.shared.BebasNeueFont
 import com.vendor.shared.FontSize
 import com.vendor.shared.TextSecondary
+import com.vendor.shared.domain.Customer
+import com.vendor.shared.util.RequestState
 
 @Composable
 fun CustomDrawer(
@@ -29,7 +32,8 @@ fun CustomDrawer(
     onLogoutClick : () -> Unit,
     onAdminPannelClick : () -> Unit,
     onContactUsClick : () -> Unit,
-    isCustomDrawerOpen : Boolean
+    isCustomDrawerOpen : Boolean,
+    customer : RequestState<Customer>
 ){
     var selectedItem by remember { mutableStateOf<DrawerItem?>(null) }
     if(!isCustomDrawerOpen){
@@ -80,14 +84,20 @@ fun CustomDrawer(
             }
         }
         Spacer(modifier = Modifier.weight(1f))
-        DrawerItemCard(
-            drawerItem = DrawerItem.Admin,
-            onSelect = {
-                selectedItem = DrawerItem.Admin
-                onAdminPannelClick()
-            },
-            isActive = selectedItem,
-        )
+        AnimatedContent(
+            targetState = customer
+        ){customerState ->
+            if(customerState.isSuccess() && customerState.getSuccessData().isAdmin == true){
+                DrawerItemCard(
+                    drawerItem = DrawerItem.Admin,
+                    onSelect = {
+                        selectedItem = DrawerItem.Admin
+                        onAdminPannelClick()
+                    },
+                    isActive = selectedItem,
+                )
+            }
+        }
         Spacer(modifier = Modifier.height(24.dp))
     }
 }

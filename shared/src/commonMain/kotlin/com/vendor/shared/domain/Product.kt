@@ -9,6 +9,7 @@ import com.vendor.shared.CategoryRed
 import com.vendor.shared.CategoryRoseGold
 import com.vendor.shared.CategoryYellow
 import kotlinx.serialization.Serializable
+import kotlin.time.Clock
 
 @Serializable
 data class Product(
@@ -22,7 +23,8 @@ data class Product(
     val price: Double,
     val isPopular : Boolean = false,
     val isDiscounted : Boolean = false,
-    val isNew : Boolean = false
+    val isNew : Boolean = false,
+    val createdAt : Long = Clock.System.now().toEpochMilliseconds()
 )
 
 enum class ProductCategory(

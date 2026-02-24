@@ -59,7 +59,7 @@ fun SetUpNavGraph(startDestination : Screen = Screen.Auth){
             )
         }
         composable<Screen.ManageProduct>{
-            val id = it.toRoute<Screen.ManageProduct>().id
+            val id = it.toRoute<Screen.ManageProduct>().productId
             ManageProductScreen(
                 id = id,
                 navigateBack = {

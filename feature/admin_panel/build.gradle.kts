@@ -26,6 +26,9 @@ kotlin {
     }
 
     sourceSets {
+        androidMain.dependencies {
+          //  implementation(libs.ktor.client.okhttp)
+        }
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -39,8 +42,9 @@ kotlin {
             implementation(libs.compose.navigation)
             implementation(libs.koin.compose.viewmodel)
             implementation(libs.messagebar.kmp)
+            implementation(libs.messagebar.kmp)
             implementation(project(path =":shared"))
-
+            implementation(libs.ktor.client.core)
             implementation(project(path =":data"))
         }
         commonTest.dependencies {

@@ -1,6 +1,7 @@
 package com.vendor.di
 
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.vendor.admin_panel.AdminPanelViewModel
 import com.vendor.auth.AuthViewModel
 import com.vendor.data.AdminRepoImpl
 import com.vendor. data.domain.CustomerRepository
@@ -23,6 +24,7 @@ val sharedModule = module {
     viewModelOf(::HomeGraphViewModel)
     viewModelOf(::ProfileViewModel)
     viewModelOf(::ManageProductViewModel)
+    viewModelOf(::AdminPanelViewModel)
 }
 
 expect val targetModule : Module

@@ -28,6 +28,9 @@ kotlin {
     }
 
     sourceSets {
+        androidMain.dependencies {
+            implementation(libs.ktor.android.client)
+        }
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -42,7 +45,7 @@ kotlin {
             implementation(libs.auth.firebase.kmp)
             implementation(libs.firebase.storage)
             implementation(project(path = ":shared"))
-
+            implementation(libs.ktor.client.core)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

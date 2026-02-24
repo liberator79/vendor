@@ -24,7 +24,9 @@ firebase = "2.4.0"
 coil3 = "3.3.0"
 ktor = "3.4.0"
 
+
 [libraries]
+
 
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }

@@ -46,6 +46,7 @@ import com.vendor.home.domain.BottomBarDestination
 import com.vendor.home.domain.CustomDrawerState
 import com.vendor.home.domain.isOpened
 import com.vendor.home.domain.opposite
+import com.vendor.products_overview.ProductsOverviewScreen
 import com.vendor.shared.Alpha
 import com.vendor.shared.BebasNeueFont
 import com.vendor.shared.FontSize
@@ -215,7 +216,9 @@ fun HomeGraphScreen(
                            navController = navController
 
                        ){
-                           composable<Screen.CustomerFeed> {  }
+                           composable<Screen.CustomerFeed> {
+                               ProductsOverviewScreen()
+                           }
                            composable<Screen.Cart> {  }
                            composable<Screen.Categories> {  }
                        }

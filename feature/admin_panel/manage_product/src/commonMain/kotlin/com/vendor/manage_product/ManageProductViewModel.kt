@@ -78,7 +78,8 @@ class ManageProductViewModel(
                 screenState.thumbnail.isNotEmpty() &&
                 screenState.price != 0.0
 
-    val isStateChanged : Boolean = screenState.thumbnail.isNotEmpty()
+    val isStateChanged : Boolean
+        get() = screenState.thumbnail.isNotEmpty()
 
     fun updateId(value : String){
         screenState = screenState.copy(id = value)

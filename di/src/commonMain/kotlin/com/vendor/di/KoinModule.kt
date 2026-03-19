@@ -6,9 +6,12 @@ import com.vendor.auth.AuthViewModel
 import com.vendor.data.AdminRepoImpl
 import com.vendor. data.domain.CustomerRepository
 import com.vendor.data.CutomerRepositoryImpl
+import com.vendor.data.ProductsRepositoryImpl
 import com.vendor.data.domain.AdminRepository
+import com.vendor.data.domain.ProductsRepository
 import com.vendor.home.HomeGraphViewModel
 import com.vendor.manage_product.ManageProductViewModel
+import com.vendor.products_overview.ProductsOverviewViewModel
 import com.vendor.profile.ProfileViewModel
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
@@ -20,11 +23,13 @@ import org.koin.dsl.module
 val sharedModule = module {
     single<CustomerRepository> { CutomerRepositoryImpl() }
     single<AdminRepository> { AdminRepoImpl() }
+    single<ProductsRepository> { ProductsRepositoryImpl() }
     viewModelOf(::AuthViewModel)
     viewModelOf(::HomeGraphViewModel)
     viewModelOf(::ProfileViewModel)
     viewModelOf(::ManageProductViewModel)
     viewModelOf(::AdminPanelViewModel)
+    viewModelOf(::ProductsOverviewViewModel)
 }
 
 expect val targetModule : Module

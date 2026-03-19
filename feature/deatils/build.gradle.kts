@@ -20,12 +20,19 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "home"
+            baseName = "details"
             isStatic = true
         }
     }
 
     sourceSets {
+        androidMain.dependencies {
+            implementation(libs.ktor.android.client)
+            implementation(libs.androidx.activity.compose)
+        }
+        iosMain.dependencies {
+            implementation(libs.ktor.darwin.client)
+        }
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -34,14 +41,21 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
+
             implementation(project(path = ":shared"))
             implementation(project(path = ":data"))
-            implementation(project(path = ":feature:home:products_overview"))
+
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(libs.koin.compose)
-            implementation(libs.compose.navigation)
             implementation(libs.koin.compose.viewmodel)
+
             implementation(libs.messagebar.kmp)
+
+
+            implementation(libs.coil3)
+            implementation(libs.coil3.compose)
+            implementation(libs.coil3.compose.core)
+            implementation(libs.coil3.network.ktor)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -50,7 +64,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.example.home"
+    namespace = "com.example.details"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
